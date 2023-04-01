@@ -27,7 +27,7 @@ type IndexModel interface {
 }
 
 type OpensearchClient interface {
-	Index(ctx context.Context, indexName string, model IndexModel) error
+	Index(ctx context.Context, indexName string, model IndexModel) (*opensearchapi.Response, error)
 	CreateIndices(ctx context.Context, indexName string, body *strings.Reader) (*opensearchapi.Response, error)
 	PutIndicesMapping(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error)
 	Search(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error)
@@ -94,7 +94,7 @@ func (k *opensearchClient) PutIndicesMapping(ctx context.Context, indexNames []s
 
 }
 
-func (k *opensearchClient) Index(ctx context.Context, indexName string, model IndexModel) error {
+func (k *opensearchClient) Index(ctx context.Context, indexName string, model IndexModel) (*opensearchapi.Response, error) {
 	logger := logrus.WithFields(logrus.Fields{
 		"indexName": indexName,
 		"docID":     model.GetID(),
@@ -103,7 +103,7 @@ func (k *opensearchClient) Index(ctx context.Context, indexName string, model In
 	docData, err := json.Marshal(model)
 	if err != nil {
 		logger.Error(err.Error())
-		return err
+		return nil, err
 	}
 
 	body := strings.NewReader(string(docData))
@@ -118,12 +118,12 @@ func (k *opensearchClient) Index(ctx context.Context, indexName string, model In
 	res, err := req.Do(ctx, k.client)
 	if err != nil {
 		logger.Error(err.Error())
-		return err
+		return nil, err
 	}
 
 	logger.Info(res)
 
-	return nil
+	return res, nil
 }
 
 func (k *opensearchClient) Search(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error) {
