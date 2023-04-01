@@ -4,6 +4,7 @@ cover_args=-cover -coverprofile=cover.out `go list ./...` && go tool cover -html
 
 VERSION?= $(shell git describe --match 'v[0-9]*' --tags --always)
 
+
 # make tidy
 tidy:
 	go mod tidy
@@ -15,11 +16,6 @@ clean-up-mock:
 # make generate
 generate: clean-up-mock
 	go generate ./...
-
-
-# make lint
-lint:
-	@golangci-lint run
 
 # make coverage
 coverage:
