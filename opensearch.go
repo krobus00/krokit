@@ -30,6 +30,7 @@ type OpensearchClient interface {
 	Index(ctx context.Context, indexName string, model IndexModel) error
 	CreateIndices(ctx context.Context, indexName string, body *strings.Reader) (*opensearchapi.Response, error)
 	PutIndicesMapping(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error)
+	Search(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error)
 }
 
 type opensearchClient struct {
@@ -126,4 +127,25 @@ func (k *opensearchClient) Index(ctx context.Context, indexName string, model In
 	logger.Info(res)
 
 	return nil
+}
+
+func (k *opensearchClient) Search(ctx context.Context, indexNames []string, body *strings.Reader) (*opensearchapi.Response, error) {
+	logger := logrus.WithFields(logrus.Fields{
+		"indexNames": indexNames,
+	})
+
+	req := opensearchapi.SearchRequest{
+		Index:  indexNames,
+		Body:   body,
+		Pretty: true,
+	}
+
+	res, err := req.Do(ctx, k.client)
+	if err != nil {
+		logger.Error(err.Error())
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	return res, nil
 }
