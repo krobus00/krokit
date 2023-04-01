@@ -4,6 +4,10 @@
 
 > 2023-04-01
 
+### Bump
+
+* update changelog
+
 ### Hotfix
 
 * return res
