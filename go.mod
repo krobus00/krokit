@@ -4,8 +4,11 @@ go 1.18
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0
+	github.com/goccy/go-json v0.10.2
+	github.com/golang/mock v1.6.0
 	github.com/google/uuid v1.3.0
 	github.com/jpillora/backoff v1.0.0
+	github.com/opensearch-project/opensearch-go v1.1.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.15.0
 	gorm.io/driver/postgres v1.5.0
