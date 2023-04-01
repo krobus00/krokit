@@ -66,7 +66,6 @@ func (k *opensearchClient) CreateIndices(ctx context.Context, indexName string, 
 		logger.Error(err.Error())
 		return nil, err
 	}
-	defer res.Body.Close()
 
 	logger.Info(res)
 
@@ -88,7 +87,6 @@ func (k *opensearchClient) PutIndicesMapping(ctx context.Context, indexNames []s
 		logger.Error(err.Error())
 		return nil, err
 	}
-	defer res.Body.Close()
 
 	logger.Info(res)
 
@@ -122,7 +120,6 @@ func (k *opensearchClient) Index(ctx context.Context, indexName string, model In
 		logger.Error(err.Error())
 		return err
 	}
-	defer res.Body.Close()
 
 	logger.Info(res)
 
@@ -145,7 +142,8 @@ func (k *opensearchClient) Search(ctx context.Context, indexNames []string, body
 		logger.Error(err.Error())
 		return nil, err
 	}
-	defer res.Body.Close()
+
+	logger.Info(res)
 
 	return res, nil
 }
