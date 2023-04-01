@@ -80,3 +80,18 @@ func (mr *MockOpensearchClientMockRecorder) PutIndicesMapping(arg0, arg1, arg2 i
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PutIndicesMapping", reflect.TypeOf((*MockOpensearchClient)(nil).PutIndicesMapping), arg0, arg1, arg2)
 }
+
+// Search mocks base method.
+func (m *MockOpensearchClient) Search(arg0 context.Context, arg1 []string, arg2 *strings.Reader) (*opensearchapi.Response, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Search", arg0, arg1, arg2)
+	ret0, _ := ret[0].(*opensearchapi.Response)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Search indicates an expected call of Search.
+func (mr *MockOpensearchClientMockRecorder) Search(arg0, arg1, arg2 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Search", reflect.TypeOf((*MockOpensearchClient)(nil).Search), arg0, arg1, arg2)
+}
