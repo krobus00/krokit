@@ -1,12 +1,30 @@
 
+<a name="v0.0.4"></a>
+## [v0.0.4](https://github.com/krobus00/krokit/compare/v0.0.3...v0.0.4)
+
+> 2023-04-01
+
+### Hotfix
+
+* remove defer body close
+
+
 <a name="v0.0.3"></a>
 ## [v0.0.3](https://github.com/krobus00/krokit/compare/v0.0.2...v0.0.3)
 
 > 2023-04-01
 
+### Bump
+
+* update changelog
+
 ### Feature
 
 * add opensearch search method ([#3](https://github.com/krobus00/krokit/issues/3))
+
+### Release
+
+* v0.0.3 ([#4](https://github.com/krobus00/krokit/issues/4))
 
 
 <a name="v0.0.2"></a>
