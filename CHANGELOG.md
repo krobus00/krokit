@@ -1,11 +1,26 @@
 
-<a name="v0.0.4"></a>
-## [v0.0.4](https://github.com/krobus00/krokit/compare/v0.0.3...v0.0.4)
+<a name="v0.0.5"></a>
+## [v0.0.5](https://github.com/krobus00/krokit/compare/v0.0.4...v0.0.5)
 
 > 2023-04-01
 
 ### Hotfix
 
+* return res
+
+
+<a name="v0.0.4"></a>
+## [v0.0.4](https://github.com/krobus00/krokit/compare/v0.0.3...v0.0.4)
+
+> 2023-04-01
+
+### Bump
+
+* update changelog
+
+### Hotfix
+
+* remove defer body close ([#5](https://github.com/krobus00/krokit/issues/5))
 * remove defer body close
 
 
